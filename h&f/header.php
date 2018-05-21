@@ -7,7 +7,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/fontawesome.css">
+        <link rel="stylesheet" href="../css/font-awesome.css">
         <title>MarketProject</title>
     </head>
     <body>
