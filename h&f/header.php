@@ -32,7 +32,7 @@
                                 </ul>  
                                 <form action="" class="navbar-form">
                                     <div class="form-group navbar-right">
-                                        <button type="button" class="btn btn-primary">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign_in_modal">
                                                <i class="fa fa-sign-in"></i> Войти
                                         </button>
                                         <button type="button" class="btn btn-success">
@@ -44,4 +44,26 @@
                         </div>
                     </nav>
                 </div>
-        </div
+        </div>
+        <div class="modal fade" id="sign_in_modal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                        <h4 class="modal-title">Форма входа</h4>
+                    </div>
+                        <form class="from-group" action="">
+                            <div class="modal-body">
+                               <label>Введите логин: </label>
+                                <input type="text" placeholder="login">
+                                <br/>
+                                <label>Введите пароль: </label>
+                                <input type="password" placeholder="password">
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="sumbit" data-dismiss="modal">Отправить</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
