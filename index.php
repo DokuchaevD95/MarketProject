@@ -1,5 +1,6 @@
 <?php
 include_once 'h&f/header.php';
+include "auth.php";
 ?>
 
 

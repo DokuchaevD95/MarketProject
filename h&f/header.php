@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ru">
     <head>
@@ -27,17 +28,19 @@
                             <div class="collapse navbar-collapse" id="responsive-menu">
                                 <ul class="nav navbar-nav">
                                     <li><a href="#">Товары</a></li>
-                                    <li><a href="#">elem</a></li>
-                                    <li><a href="#">elem</a></li>
+                                    <li><a href="#">Избранное</a></li>
+                                    <li><a href="#">Мои покупки</a></li>
                                 </ul>  
-                                <form action="" class="navbar-form">
+                                <form class="navbar-form" action="register.php">
                                     <div class="form-group navbar-right">
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign_in_modal">
                                                <i class="fa fa-sign-in"></i> Войти
                                         </button>
-                                        <button type="button" class="btn btn-success">
-                                               Регистрация
-                                        </button>
+                                        <form action="register.php">
+                                            <button type="href" class="btn btn-success">
+                                                   Регистрация
+                                            </button>    
+                                        </form>
                                     </div>
                                 </form>
                             </div>
@@ -52,17 +55,22 @@
                         <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
                         <h4 class="modal-title">Форма входа</h4>
                     </div>
-                        <form class="from-group" action="">
-                            <div class="modal-body">
-                               <label>Введите логин: </label>
-                                <input type="text" placeholder="login">
-                                <br/>
-                                <label>Введите пароль: </label>
-                                <input type="password" placeholder="password">
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="sumbit" data-dismiss="modal">Отправить</button>
-                            </div>
+                    <form class="from-group" action="index.php" method="post">
+                        <div class="modal-body">
+                           <label for="_login">Введите логин: </label>
+                            <input type="text" placeholder="login" id="_login" name="login">
+                            <br/>
+                            <br/>
+                            <label for="_password">Введите пароль: </label>
+                            <input type="password" placeholder="password" id="_password" name="password">
+                            <br/>
+                            <br/>
+                            <label for="save_data">Запомнить данные:</label>
+                            <input type="checkbox" id="save_data" name="save_data" checked="checked"> 
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="sumbit">Вход</button>
+                        </div>
                     </form>
                 </div>
             </div>
