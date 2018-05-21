@@ -28,21 +28,38 @@
                             <div class="collapse navbar-collapse" id="responsive-menu">
                                 <ul class="nav navbar-nav">
                                     <li><a href="#">Товары</a></li>
-                                    <li><a href="#">Избранное</a></li>
-                                    <li><a href="#">Мои покупки</a></li>
-                                </ul>  
-                                <form class="navbar-form" action="register.php">
-                                    <div class="form-group navbar-right">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign_in_modal">
-                                               <i class="fa fa-sign-in"></i> Войти
-                                        </button>
-                                        <form action="register.php">
-                                            <button type="href" class="btn btn-success">
-                                                   Регистрация
-                                            </button>    
-                                        </form>
-                                    </div>
-                                </form>
+                                    <?php
+                                        if($is_login) echo "<li><a href=\"#\">Избранное</a></li>"; 
+                                    ?>
+                                    <?php
+                                        if($is_login) echo "<li><a href=\"#\">Мои покупки</a></li>";
+                                    ?>
+                                </ul>
+                                <?php 
+                                    if(!$is_login)
+                                        echo "<form class=\"navbar-form\" action=\"register.php\">
+                                                <div class=\"form-group navbar-right\">
+                                                    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#sign_in_modal\">
+                                                           <i class=\"fa fa-sign-in\"></i> Войти
+                                                    </button>
+                                                    <form action=\"register.php\">
+                                                        <button type=\"href\" class=\"btn btn-success\">
+                                                               Регистрация
+                                                        </button>    
+                                                    </form>
+                                                </div>
+                                            </form>";
+                                    else 
+                                        echo "<form class=\"navbar-form\" action=\"logout.php\">
+                                                <div class=\"form-group navbar-right\">
+                                                    <label style=\"color:white;\">Вы вошли как $login </label> 
+                                                    <button type=\"submit\" class=\"btn btn-danger\">
+                                                        Выйти
+                                                    </button>
+                                                </div>
+                                            </form>";
+
+                                ?>    
                             </div>
                         </div>
                     </nav>
@@ -55,7 +72,7 @@
                         <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
                         <h4 class="modal-title">Форма входа</h4>
                     </div>
-                    <form class="from-group" action="index.php" method="post">
+                    <form class="from-group" action="login.php" method="post">
                         <div class="modal-body">
                            <label for="_login">Введите логин: </label>
                             <input type="text" placeholder="login" id="_login" name="login">
