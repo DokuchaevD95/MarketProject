@@ -1,6 +1,4 @@
 <?php
-    session_start();
-    
     if (isset($_COOKIE['login']) and isset($_COOKIE['password']))
     {
         $login = $_COOKIE['login'];
