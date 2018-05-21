@@ -72,7 +72,7 @@
                         <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
                         <h4 class="modal-title">Форма входа</h4>
                     </div>
-                    <form class="from-group" action="login.php" method="post">
+                    <form class="from-group" action="login_via_post.php" method="post">
                         <div class="modal-body">
                            <label for="_login">Введите логин: </label>
                             <input type="text" placeholder="login" id="_login" name="login">
