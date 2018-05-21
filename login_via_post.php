@@ -18,8 +18,8 @@
             {
                 if(isset($_POST['save_data']))
                 {
-                    setcookie('login', $res[1]);
-                    setcookie('password', $res[2]);
+                    setcookie('login', $res[1], time() + 31536000);
+                    setcookie('password', $res[2], time() + 31536000);
                 }
                 else
                 {
