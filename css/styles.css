@@ -1,0 +1,25 @@
+#register_button:hover
+{
+    background: #00CC00;
+    color: #ffffff;
+}
+
+#register_button
+{
+    background: #ffffff;
+    border-color: #00CC00;
+}
+
+button, .navbar-ref
+{
+    -webkit-transition: All 0.3s ease;
+	-moz-transition: All 0.3s ease;
+	-o-transition: All 0.3s ease;
+	-ms-transition: All 0.3s ease;
+	transition: All 0.3s ease;
+}
+
+#_login_now_box
+{
+    margin-left: 3px;
+}

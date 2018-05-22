@@ -8,7 +8,9 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/styles.css">
         <link rel="stylesheet" href="../css/font-awesome.css">
+        
         <title>MarketProject</title>
     </head>
     <body>
@@ -17,7 +19,7 @@
                     <nav class="navbar navbar-inverse navbar-static-top">
                         <div class="container">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="#">MarketProject</a>
+                                <a class="navbar-brand" href="../index.php">MarketProject</a>
                                 <button class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu" type="button">
                                     <span class="sr-only">Открыть навигацию</span>
                                     <span class="icon-bar"></span>
@@ -27,28 +29,31 @@
                             </div>
                             <div class="collapse navbar-collapse" id="responsive-menu">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">Товары</a></li>
+                                    <li  class="navbar-ref"><a href="#">Товары</a></li>
                                     <?php
-                                        if($is_login) echo "<li><a href=\"#\">Избранное</a></li>"; 
+                                        if($is_login) echo "<li class=\"navbar-ref\"><a href=\"#\">Избранное</a></li>"; 
                                     ?>
                                     <?php
-                                        if($is_login) echo "<li><a href=\"#\">Мои покупки</a></li>";
+                                        if($is_login) echo "<li class=\"navbar-ref\"><a href=\"#\">Мои покупки</a></li>";
                                     ?>
                                 </ul>
                                 <?php 
                                     if(!$is_login)
-                                        echo "<form class=\"navbar-form\" action=\"register.php\">
+                                    {
+                                        echo "<form class=\"navbar-form\" action=\"register_page.php\">
                                                 <div class=\"form-group navbar-right\">
                                                     <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#sign_in_modal\">
                                                            <i class=\"fa fa-sign-in\"></i> Войти
-                                                    </button>
-                                                    <form action=\"register.php\">
+                                                    </button>";
+                                        if(!$regiter_form) 
+                                            echo "<form>
                                                         <button type=\"href\" class=\"btn btn-success\">
                                                                Регистрация
                                                         </button>    
                                                     </form>
                                                 </div>
                                             </form>";
+                                    }
                                     else 
                                         echo "<form class=\"navbar-form\" action=\"logout.php\">
                                                 <div class=\"form-group navbar-right\">
@@ -58,7 +63,6 @@
                                                     </button>
                                                 </div>
                                             </form>";
-
                                 ?>    
                             </div>
                         </div>
