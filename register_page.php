@@ -33,9 +33,7 @@ unset($register_form);
                         <button type="button" class="btn btn-default" id="register_button">Зарегестрироваться</button>
                     </div>
                     <hr/>
-                    <h4 style="color:red;" id="_status">
-                        
-                    </h4>
+                    <h6 style="color:red;" id="_status"></h6>
                 </form>
             </div>
             <div class="col item"></div>
