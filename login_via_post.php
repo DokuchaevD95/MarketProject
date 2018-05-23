@@ -3,14 +3,16 @@
     {
         $login = $_POST['login'];
         $password = $_POST['password'];
-        require "db_connect.php";;
+        require "db_connect.php";
         $sql = "select * from users where login = '".$login."' and password = '".$password."';";
         $res = pg_query($conn, $sql);
+        require "db_close.php";
         if(!$res)
         {
             unset($login);
             unset($password);
             $is_login = false;
+            echo "Ошибка подключения к базе данных!";
         }
         else
         {
@@ -28,10 +30,12 @@
                     $_SESSION['login'] = $res[1];
                     $_SESSION['password'] = $res[2];
                 }
+                echo "ok";
+            }
+            else
+            {
+                echo "Ошибка ввода логина или пароля!";
             }
         }
-        require "db_close.php";
     }
-    header("Location: index.php");
-    exit();
 ?>
