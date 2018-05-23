@@ -1,0 +1,1 @@
+$(function(){$('#_my_selles').addClass('active');});

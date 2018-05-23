@@ -1,0 +1,1 @@
+$(function(){$('#_favorite').addClass('active');});
