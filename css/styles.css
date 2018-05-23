@@ -23,3 +23,12 @@ button, .navbar-ref
 {
     margin-left: 3px;
 }
+.my_card
+{
+    margin-bottom:2%;
+}
+.card
+{
+    margin-left:auto;
+    margin-right:auto;
+}
