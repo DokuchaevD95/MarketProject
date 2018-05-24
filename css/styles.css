@@ -25,10 +25,14 @@ button, .navbar-ref
 }
 .my_card
 {
-    margin-bottom:2%;
+    margin-bottom:1%;
 }
 .card
 {
     margin-left:auto;
     margin-right:auto;
+}
+.card-body
+{
+    padding:10px
 }

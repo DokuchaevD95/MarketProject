@@ -9,7 +9,7 @@ include_once 'h&f/header.php';
 ?>
 
 <div class="container-fluid">
-    <div class="row" style="margin-top:2%;">
+    <div class="row" style="margin-top:1%;">
         <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="card" style="width: 18rem;">
                   <img class="card-img-top" src=".../100px180/" alt="Card image cap" width=150 height=150>
