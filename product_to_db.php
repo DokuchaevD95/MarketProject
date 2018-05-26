@@ -9,6 +9,8 @@
 
 		if(isset($_FILES['img']))
 		{
+			if(!file_exists($_SERVER['DOCUMENT_ROOT'].'/src'))
+				mkdir($_SERVER['DOCUMENT_ROOT'].'/src', '0777');
 			$img = $_FILES['img'];
 			$path = $_SERVER['DOCUMENT_ROOT'].'/src/';
 			$tmp_name = $_FILES['img']['tmp_name'];
