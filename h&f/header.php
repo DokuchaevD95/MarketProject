@@ -14,6 +14,9 @@
         <title>MarketProject</title>
     </head>
     <body>
+        <?php
+            echo "<div style=\"display:none;\" id=\"_user_id\">$user_id</div>";
+        ?>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="index.php">MarketProject</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +42,7 @@
                     ?>
                     <?php
                     if($is_login)
-                        echo "<li class=\"nav-item\" id=\"_add_product.php\">
+                        echo "<li class=\"nav-item\" id=\"_add_product\">
                             <a class=\"nav-link\" href=\"add_product_page.php\"><i class=\"fa fa-plus\"></i><span class=\"sr-only\">(current)</span></a>
                         </li>";
                     ?>

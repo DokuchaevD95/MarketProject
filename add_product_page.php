@@ -18,7 +18,7 @@ include_once 'h&f/header.php';
                         <br/>
                         <input type="text" name="name" id="_name">
                         <br/>
-                        <label for="#_description">Оисание товара:</label>
+                        <label for="#_description">Описание товара:</label>
                         <br/>
                         <textarea name="description", id="_description"></textarea>
                         <hr/>
@@ -34,6 +34,8 @@ include_once 'h&f/header.php';
                         <hr/>
                         <button class="btn btn-outline-primary" type="button" id="_send_info_product">Отправить объявление</button>
                     </form>
+                    <hr/>
+                    <div id="_status"></div>
                 </div>
             </div>
             <div class="col-4"></div>

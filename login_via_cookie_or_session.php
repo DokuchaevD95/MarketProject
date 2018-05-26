@@ -14,8 +14,17 @@
         }
         else
         {
+            if($res = pg_fetch_row($res))
+            {
             $is_login = true;
-            $user_id = res[0];
+            $user_id = $res[0];
+            }
+            else
+            {
+                unset($login);
+                unset($password);
+                $is_login = false;
+            }
         }
         require "db_close.php";
     }
