@@ -37,7 +37,12 @@
                             <a class=\"nav-link\" href=\"my_selles.php\">Мои продажи<span class=\"sr-only\">(current)</span></a>
                         </li>";
                     ?>
-
+                    <?php
+                    if($is_login)
+                        echo "<li class=\"nav-item\" id=\"_add_product.php\">
+                            <a class=\"nav-link\" href=\"add_product_page.php\"><i class=\"fa fa-plus\"></i><span class=\"sr-only\">(current)</span></a>
+                        </li>";
+                    ?>
                 </ul>
                 <?php
                     if(!$is_login)

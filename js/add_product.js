@@ -1,0 +1,1 @@
+$(function(){$('#_add_product').addClass('active');});
