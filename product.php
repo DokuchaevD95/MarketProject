@@ -22,34 +22,20 @@ else
 			
 		</div>
 		<fiv class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
-			<hr/>
+			<hr id="_error_status"/>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12" id="_image_container">
 						
 					</div>
 					<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 text-center" id="_content_container" style="margin-top:5px;">
-						<?php
-							if($is_login)
-							echo "<div class=\"btn-group \" style=\"display:none;\" id=\"_btn_product_group\">
-								<button class=\"btn btn-primary\" id=\"_buy\">Купить <i class=\"fa fa-credit-card\"></i></button>
-								<button class=\"btn btn-success\" id=\"_favorite\">В корзину <i class=\"fa fa-shopping-basket\"></i></button>
-							</div>";
-						?>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col" id="_chat">
 						<hr/>
-						<?php
-						if($is_login)
-						{
-							echo "<div class=\"d-flex justify-content-center\"><button class=\"btn btn-danger text-center\" id=\"_comment\">Комментировать</button></div>";
-						}
-						?>
-
 						<div class="list-group">
-							
+						
 						</div>
 					</div>
 				</div>

@@ -34,5 +34,6 @@ else
 	{
 		echo json_encode(array('error' => 'Ошибка подключения к базе данных!'));
 	}
+	require "db_close.php";
 }
 ?>

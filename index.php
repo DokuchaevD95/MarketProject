@@ -10,15 +10,14 @@ include_once 'h&f/header.php';
 <div class="container-fluid">
     <div class="row">
        <div class="col-lg-9 col-md-8">
-            <hr/>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top:4%;">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top:2%;">
+              <ol class="carousel-indicators" id="_carousel_indicator">
+<!--                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
               </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
+              <div class="carousel-inner" id="_carousel_content">
+<!--                 <div class="carousel-item active">
                   <img class="d-block w-100" src="http://via.placeholder.com/800x400" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>...</h5>
@@ -30,7 +29,7 @@ include_once 'h&f/header.php';
                 </div>
                 <div class="carousel-item">
                   <img class="d-block w-100" src="http://via.placeholder.com/800x400" alt="Third slide">
-                </div>
+                </div> -->
                 
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -55,7 +54,7 @@ include_once 'h&f/header.php';
 <?php
 require_once 'h&f/modules.php';
 ?>
-
+<script type="text/javascript" src="js/index_content.js"></script>
 <?php
 include_once 'h&f/footer.php';
 ?>
