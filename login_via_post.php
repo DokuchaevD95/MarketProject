@@ -18,17 +18,19 @@
         {
             if($res = pg_fetch_row($res))
             {
-                if(isset($_POST['save_data']))
+                if($_POST['save_data'] == "true")
                 {
+                    setcookie('check', $_POST['save_data']);
+                    setcookie('user_id', $res[0], time() + 31536000);
                     setcookie('login', $res[1], time() + 31536000);
                     setcookie('password', $res[2], time() + 31536000);
                 }
                 else
                 {
                     session_start();
-                    $_SESSION['user_id'] = $res[0];
-                    $_SESSION['login'] = $res[1];
-                    $_SESSION['password'] = $res[2];
+                    $_SESSION['session_user_id'] = $res[0];
+                    $_SESSION['session_login'] = $res[1];
+                    $_SESSION['session_password'] = $res[2];
                 }
                 echo "ok";
             }

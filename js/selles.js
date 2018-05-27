@@ -49,6 +49,16 @@ $(function(){
   		});
 	}
 
+	function paginate_left()
+	{
+		
+	}	
+
+	function paginate_right()
+	{
+
+	}
+
 	get('count_no_selled_products.php').then(
 		function(data)
 		{
@@ -56,7 +66,7 @@ $(function(){
 			data = JSON.parse(data);
 			sessionStorage.setItem('count', data.count);
 			let max_count = 8;
-			
+			sessionStorage.setItem('max_count', max_count);
 		}
 	).then(
 		function()

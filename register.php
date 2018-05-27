@@ -35,9 +35,9 @@
                     $res = pg_fetch_row($search);
                     
                     session_start();
-                    $_SESSION['user_id'] = $res[0];
-                    $_SESSION['login'] = $res[1];
-                    $_SESSION['password'] = $res[2];
+                    $_SESSION['session_user_id'] = $res[0];
+                    $_SESSION['session_login'] = $res[1];
+                    $_SESSION['session_password'] = $res[2];
                 }
             }
             else

@@ -28,11 +28,11 @@
         }
         require "db_close.php";
     }
-    if (isset($_SESSION['login']) and isset($_SESSION['password']))
+    if (isset($_SESSION['session_login']) and isset($_SESSION['session_password']))
     {
-        $login = $_SESSION['login'];
-        $password = $_SESSION['password'];
-        $user_id = $_SESSION['user_id'];
+        $login = $_SESSION['session_login'];
+        $password = $_SESSION['session_password'];
+        $user_id = $_SESSION['session_user_id'];
         $is_login = true;
     }
 ?>
