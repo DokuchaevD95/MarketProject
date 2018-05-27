@@ -20,6 +20,8 @@
             {
                 if($_POST['save_data'] == "true")
                 {
+                    $is_login = true;
+                    $user_id = $res[0];
                     setcookie('check', $_POST['save_data']);
                     setcookie('user_id', $res[0], time() + 31536000);
                     setcookie('login', $res[1], time() + 31536000);
@@ -27,6 +29,8 @@
                 }
                 else
                 {
+                    $is_login = true;
+                    $user_id = $res[0];
                     session_start();
                     $_SESSION['session_user_id'] = $res[0];
                     $_SESSION['session_login'] = $res[1];
