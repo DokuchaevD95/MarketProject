@@ -18,6 +18,7 @@
             {
             $is_login = true;
             $user_id = $res[0];
+            setcookie('user_id', $res[0]);
             }
             else
             {
@@ -30,6 +31,7 @@
     }
     if (isset($_SESSION['session_login']) and isset($_SESSION['session_password']))
     {
+        setcookie('user_id', $_SESSION['session_user_id']);
         $login = $_SESSION['session_login'];
         $password = $_SESSION['session_password'];
         $user_id = $_SESSION['session_user_id'];

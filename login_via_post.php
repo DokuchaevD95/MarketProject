@@ -23,7 +23,7 @@
                     $is_login = true;
                     $user_id = $res[0];
                     setcookie('check', $_POST['save_data']);
-                    setcookie('user_id', $res[0], time() + 31536000);
+                    setcookie('user_id', $res[0]);
                     setcookie('login', $res[1], time() + 31536000);
                     setcookie('password', $res[2], time() + 31536000);
                 }
@@ -32,6 +32,7 @@
                     $is_login = true;
                     $user_id = $res[0];
                     session_start();
+                    setcookie('user_id', $res[0]);
                     $_SESSION['session_user_id'] = $res[0];
                     $_SESSION['session_login'] = $res[1];
                     $_SESSION['session_password'] = $res[2];
