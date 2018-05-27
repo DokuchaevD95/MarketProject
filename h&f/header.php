@@ -15,6 +15,7 @@
     </head>
     <body>
         <?php
+        if($is_login)
             echo "<div style=\"display:none;\" id=\"_user_id\">$user_id</div>";
         ?>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

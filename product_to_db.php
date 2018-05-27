@@ -14,13 +14,14 @@
 			$img = $_FILES['img'];
 			$path = $_SERVER['DOCUMENT_ROOT'].'/src/';
 			$tmp_name = $_FILES['img']['tmp_name'];
+			$name_on_server =  "/src/"."$user_id"."_".date("d.m.y_U").".jpg";
 			$finally_name = $path."$user_id"."_".date("d.m.y_U").".jpg";
 
 			move_uploaded_file($tmp_name, $finally_name);
 		}
 
 		require "db_connect.php";
-		$sql = "insert into products (seller, name, description, img, price) values (".$user_id.", '".$name."', '".$description."', '".$finally_name."', ".$price.");";
+		$sql = "insert into products (seller, name, description, img, price) values (".$user_id.", '".$name."', '".$description."', '".$name_on_server."', ".$price.");";
 		require "db_close.php";
 		if(pg_query($sql))
 			echo "Oк. Продажа создана!";
