@@ -3,11 +3,11 @@ $(function(){
 
 	function get_carousel_item(src, name, price, is_active, id)
 	{
-		return "<div class=\"carousel-item " + (is_active ? "active": "") + "\">\
-					<a class=\"text-white font-italic\" href=\"" + product_alias + id + "\"><img class=\"d-block\" src=\"" + src + "\" alt=\"" + name + "\" style=\"margin-left:auto; margin-right:auto; background-size: cover; height:85vh;\"></a>\
-						<div class=\"carousel-caption d-none d-md-block\">\
+		return "<div class=\"carousel-item " + (is_active ? "active": "") + "\ style=\"\">\
+					<a class=\"text-white font-italic \" href=\"" + product_alias + id + "\"><div class=\"d-flex justify-content-center\" style=\"width:65vw; height:80vh;\"><img class=\"d-block\" src=\"" + src + "\" alt=\"" + name + "\" style=\"margin-left:auto; margin-right:auto; margin-bottom:130px;\"></div></a>\
+						<div class=\"carousel-caption d-none d-md-block\" style=\"color:black;\">\
 							<h5>" + name + "</h5>\
-							<p>" + price + " <i class=\"fa fa-rub\"></i></p>\
+							<p >" + price + " <i class=\"fa fa-rub\"></i></p>\
 						</div>\
 				</div>";
 	}

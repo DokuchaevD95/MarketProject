@@ -7,7 +7,7 @@ $(function(){
 	{
 		return "<div class=\"col-lg-3 col-md-6 col-sm-12\">\
 					<div class=\"card\" style=\"width: 18rem;\">\
-						<img class=\"card-img-top\" src=\"" + src + "\" alt=\"" + name + "\" height=150 style=\"margin-left:auto; margin-right:auto; background-size: contain;\">\
+						<img class=\"card-img-top\" src=\"" + src + "\" alt=\"" + name + "\" height=150 style=\"margin-left:auto; margin-right:auto;\">\
 						<div class=\"card-body\">\
 							<a class=\"d-block btn\" href=\"" + product_alias + id + "\"><h5 class=\"card-title\">" + name + ": " + price + " <span><i class=\"fa fa-rub\"></i></span></h5></a>\
                             <div class=\"d-flex justify-content-center\">\
