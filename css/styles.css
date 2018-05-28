@@ -40,3 +40,7 @@ button, .navbar-ref
 {
     width: 10%;
 }
+.card-img-top
+{
+    width: auto;
+}

@@ -4,7 +4,7 @@ $(function(){
 	function get_carousel_item(src, name, price, is_active, id)
 	{
 		return "<div class=\"carousel-item " + (is_active ? "active": "") + "\">\
-					<a class=\"text-white font-italic\" href=\"" + product_alias + id + "\"><img class=\"d-block w-100\" src=\"" + src + "\" alt=\"" + name + "\"></a>\
+					<a class=\"text-white font-italic\" href=\"" + product_alias + id + "\"><img class=\"d-block\" src=\"" + src + "\" alt=\"" + name + "\" style=\"margin-left:auto; margin-right:auto; background-size: cover; height:85vh;\"></a>\
 						<div class=\"carousel-caption d-none d-md-block\">\
 							<h5>" + name + "</h5>\
 							<p>" + price + " <i class=\"fa fa-rub\"></i></p>\
