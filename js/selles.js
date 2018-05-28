@@ -99,12 +99,12 @@ $(function(){
             let start = 0;
             sessionStorage.setItem('start', start);
             let content = $('#_row_content');
-            if((start+step)>count)
+            if((start+step)>=count)
             {
-                step = count;
-                console.log("msg");    
                 $('#_right').attr('disabled', 'true');
                 $('#_left').attr('disabled', 'true');
+                step = count;
+                console.log("msg");    
                 post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
                     data = JSON.parse(data);
                     console.log(data);
@@ -118,7 +118,14 @@ $(function(){
             {
                 $('#_right').attr('disabled', 'true');
                 $('#_left').attr('disabled', 'true');
-                
+                post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
+                    data = JSON.parse(data);
+                    console.log(data);
+                    for(let i = 0; i < data.length; i++)
+                    {
+                        $(get_card(data[i].name, data[i].img, data[i].id, data[i].price)).appendTo(content);    
+                    }
+                });
             }
 		}
 	).then(

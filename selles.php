@@ -14,12 +14,13 @@ include_once 'h&f/header.php';
     </div>
     
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="d-flex justify-content-between">
-              <button class="pagination-btn btn-outline-primary btn fa fa-arrow-left"></button>
-              <button class="pagination-btn btn-outline-primary btn fa fa-arrow-right"></button>
+           <hr/>
+            <div class="d-flex justify-content-center">
+              <button class="pagination-btn btn-outline-primary btn fa fa-arrow-left" id="_left"></button>
+              <button class="pagination-btn btn-outline-primary btn fa fa-arrow-right" id="_right"></button>
             </div>
         </div>
     </div>
