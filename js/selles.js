@@ -56,34 +56,72 @@ $(function(){
 
 	function paginate_left(e)
 	{
+        let content = $('#_row_content');
         step = 8;
-        console.log(e);
-        count = sessionStorage.getItem("count");
-		start = sessionStorage.getItem("start");
-        step = sessionStorage.getItem("step");
-        start = start < step ?0:start-step;
-        
+        count = parseInt(sessionStorage.getItem("count"));
+		start = parseInt(sessionStorage.getItem("start"));
+        start -= step;
+        sessionStorage.setItem("start", start);
+        if(start == 0)
+        {
+            console.log(start);
+            $('#_left').css('display', 'none');
+            post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
+                data = JSON.parse(data);
+                content.empty();
+                for(let i = 0; i < data.length; i++)
+                {
+                    $(get_card(data[i].name, data[i].img, data[i].id, data[i].price)).appendTo(content);    
+                }
+                $('#_right').css('display', 'inline-block');
+            });
+        }
+        else
+        {
+            post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
+                data = JSON.parse(data);
+                content.empty();
+                for(let i = 0; i < data.length; i++)
+                {
+                    $(get_card(data[i].name, data[i].img, data[i].id, data[i].price)).appendTo(content);    
+                }
+                $('#_right').css('display', 'inline-block');
+            });
+        }
 	}	
 
 	function paginate_right(e)
 	{
+        let content = $('#_row_content');
         step = 8;
-        console.log(e);
-        count = sessionStorage.getItem("count");
-		start = sessionStorage.getItem("start");
-        if(start + step <= count)
+        count = parseInt(sessionStorage.getItem("count"));
+		start = parseInt(sessionStorage.getItem("start")) + step;       
+        sessionStorage.setItem("start", start)
+        if(start+step>=count)
         {
-            $('#_right').attr('disabled', 'true');
-            return false;
+            step = step - (count - start - step);
+            
+            $('#_right').css('display', 'none');
+            post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
+                data = JSON.parse(data);
+                content.empty();
+                for(let i = 0; i < data.length; i++)
+                {
+                    $(get_card(data[i].name, data[i].img, data[i].id, data[i].price)).appendTo(content);    
+                }
+                $('#_left').css('display', 'inline-block');
+            });
         }
         else
         {
-            start = start + step;
-            step = (start + step) <= count ? step : count - start - step;
-            $('#_right').attr('disabled', 'true');
-            $('#_left').attr('disabled', 'true');
-            post('get_last_products.php', "start=" + start + "&count=" + step).then(function(data){
-                console.log(data);
+            post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
+                data = JSON.parse(data);
+                content.empty();
+                for(let i = 0; i < data.length; i++)
+                {
+                    $(get_card(data[i].name, data[i].img, data[i].id, data[i].price)).appendTo(content);    
+                }
+                $('#_left').css('display', 'inline-block');
             });
         }
 	}
@@ -101,13 +139,13 @@ $(function(){
             let content = $('#_row_content');
             if((start+step)>=count)
             {
-                $('#_right').attr('disabled', 'true');
-                $('#_left').attr('disabled', 'true');
+                $('#_right').css('display', 'none');
+                $('#_left').css('display', 'none');
+
                 step = count;
                 console.log("msg");    
                 post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
                     data = JSON.parse(data);
-                    console.log(data);
                     for(let i = 0; i < data.length; i++)
                     {
                         $(get_card(data[i].name, data[i].img, data[i].id, data[i].price)).appendTo(content);    
@@ -116,15 +154,17 @@ $(function(){
             }
             else
             {
-                $('#_right').attr('disabled', 'true');
-                $('#_left').attr('disabled', 'true');
+                $('#_right').css('display', 'inline-block');
+                $('#_left').css('display', 'none');
+
                 post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
                     data = JSON.parse(data);
-                    console.log(data);
                     for(let i = 0; i < data.length; i++)
                     {
                         $(get_card(data[i].name, data[i].img, data[i].id, data[i].price)).appendTo(content);    
                     }
+                    $('#_right').bind('click', paginate_right);
+                    $('#_left').bind('click', paginate_left);
                 });
             }
 		}
