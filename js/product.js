@@ -1,8 +1,17 @@
 $(function(){
 	let product_id = $('#_product_id').text();
 	product_id = parseInt(product_id);
-	let is_login = $('#_user_id').length !=0 ? true : false;
-
+    
+    let my_id = null;
+    for(e of document.cookie.split('; '))
+    {
+        let elem_split = e.split('=');
+        if(elem_split[0] == "user_id")
+            my_id = parseInt(elem_split[1]);     
+    }
+    let is_login = my_id > 0 ? true : false;
+    
+    
 	let prop = "id=" + product_id;
 	$.get('get_product_from_db.php', prop, function(data){
 		response = JSON.parse(data);
@@ -24,17 +33,21 @@ $(function(){
 			$(name_tag).prependTo(content_container);
 
 			$(img_tag).prependTo(image_container);
-
+                
 			if(is_login && !response.is_selled)
 				$("<div class=\"btn-group \" style=\"display:none;\" id=\"_btn_product_group\">\
 					<button class=\"btn btn-primary\" id=\"_buy\">Купить <i class=\"fa fa-credit-card\"></i></button>\
 					<button class=\"btn btn-success\" id=\"_favorite_product\">В корзину <i class=\"fa fa-shopping-basket\"></i></button>\
 					</div>").appendTo(content_container);
+            
+            
+            //if(is_login && response.is_selled)
+                
 			if(is_login)
 				$("<div class=\"d-flex justify-content-center\">\
 					<button class=\"btn btn-danger text-center\" id=\"_comment\">Комментировать</button>\
 					</div>").appendTo('#_chat');
-
+            
 			let buy_btn = $('#_buy');
 			let favorite_btn = $('#_favorite_product');
 			console.log(favorite_btn);
@@ -54,8 +67,12 @@ $(function(){
 								resp = JSON.parse(resp);
 								if(!resp.error)
 								{
+                                    alert("Продавец: " + resp.login + "\nНомер телефона: " + resp.phone);
 									buy_btn.attr('disabled', 'true');
 									favorite_btn.attr('disabled', 'true');
+                                    buy_btn.css('display', 'none');
+									favorite_btn.css('display', 'none');
+                                    $("<div>Продавец: " + resp.login + "</div><div>Номер телефона: " + resp.phone + "</div>").appendTo(content_container);
 								}
 								else
 								{

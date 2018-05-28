@@ -5,11 +5,19 @@ if(isset($_POST['user_id']) && isset($_POST['product_id']))
 
 	require "db_connect.php";
 	$res = pg_query($conn, $sql);
-	require "db_close.php";
+	
 
 	if($res)
 	{
-		echo json_encode(array());
+        $sql = "select seller from products where id=".$_POST['product_id'].";";
+        $res = pg_fetch_row(pg_query($conn, $sql))[0];
+        $sql = "select * from users where id=".$res.";";
+        $res = pg_fetch_row(pg_query($conn, $sql));
+        
+        $res['id'] = (integer)$res['id'];
+        
+		echo json_encode(array('login' => $res[1], 'phone' => $res[3]));
+        
 	}
 	else
 	{
