@@ -17,6 +17,7 @@ $(function(){
 		response = JSON.parse(data);
 		if (!response.error) 
 		{
+			let seller_id = response.seller;
 			console.log(response);
 			let content_container = $('#_content_container');
 			let image_container = $('#_image_container');
@@ -33,15 +34,12 @@ $(function(){
 			$(name_tag).prependTo(content_container);
 
 			$(img_tag).prependTo(image_container);
-                
-			if(is_login && !response.is_selled)
+
+			if(is_login && !response.is_selled && (my_id != seller_id))
 				$("<div class=\"btn-group \" style=\"display:none;\" id=\"_btn_product_group\">\
 					<button class=\"btn btn-primary\" id=\"_buy\">Купить <i class=\"fa fa-credit-card\"></i></button>\
 					<button class=\"btn btn-success\" id=\"_favorite_product\">В корзину <i class=\"fa fa-shopping-basket\"></i></button>\
 					</div>").appendTo(content_container);
-            
-            
-            //if(is_login && response.is_selled)
                 
 			if(is_login)
 				$("<div class=\"d-flex justify-content-center\">\
@@ -81,9 +79,40 @@ $(function(){
 							});
 						});
 				}
-				else
+			}
+			else
+			{
+				btn_group.remove();
+				if(my_id == response.buyer)
 				{
-					btn_group.remove();
+					$.post('get_seller.php', {'product_id': product_id}, function(resp){
+						console.log(resp);
+						resp = JSON.parse(resp);
+						if(!resp.error)
+						{
+                            $("<hr/><div>Продавец: " + resp.login + "</div><div>Номер телефона: " + resp.phone + "</div>").appendTo(content_container);
+						}
+						else
+						{
+							alert(resp.error);
+						}
+					});
+				}
+				if(my_id == response.seller)
+				{
+					$.post('get_buyer.php', {'product_id': product_id}, function(resp){
+						console.log(resp);
+						resp = JSON.parse(resp);
+						if(!resp.error)
+						{
+                            $("<hr/><div>Покупатель: " + resp.login + "</div><div>Номер телефона: " + resp.phone + "</div>").appendTo(content_container);
+						}
+						else
+						{
+							if(!resp.error == "Нет покупателя!")
+								alert(resp.error);
+						}
+					});
 				}
 			}
 		}

@@ -5,7 +5,6 @@ if(isset($_POST['user_id']) && isset($_POST['product_id']))
 
 	require "db_connect.php";
 	$res = pg_query($conn, $sql);
-	
 
 	if($res)
 	{
@@ -16,14 +15,13 @@ if(isset($_POST['user_id']) && isset($_POST['product_id']))
         
         $res['id'] = (integer)$res['id'];
         
-		echo json_encode(array('login' => $res[1], 'phone' => $res[3]));
-        
+		echo json_encode(array('login' => $res[1], 'phone' => $res[3]));   
 	}
 	else
 	{
 		echo json_encode(array('error' => 'Проблемы с подключением к базе данных!'));
 	}
+		require "db_close.php";
 }
 else echo json_encode(array('error' => 'Проблемы с POST запросом!'));
-
 ?>
