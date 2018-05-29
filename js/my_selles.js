@@ -126,7 +126,7 @@ $(function(){
         sessionStorage.setItem("start", start)
         if(start+step>=count)
         {
-            step = step - (count - start - step);
+            step = step + (count - start - step);
             
             $('#_right').css('display', 'none');
             post('get_my_products.php', 'start=' + start + "&count=" + step + "&user_id=" + user_id).then(function(data){
