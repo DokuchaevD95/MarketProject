@@ -1,5 +1,8 @@
 $(function(){
 	$('#_favorite').addClass('active');
+    $('#_right').css('display', 'none');
+    $('#_left').css('display', 'none');
+
     let user_id = null;
     for(e of document.cookie.split('; '))
     {
@@ -106,7 +109,7 @@ $(function(){
                 $("#fav_" + btn_id).addClass('btn-success');
             }
         }
-        window.location.replace('index.php');
+        window.location.reload();
     }
     
 	function paginate_left(e)
@@ -193,49 +196,53 @@ $(function(){
 
 
 	data = sessionStorage.getItem('favorite');
-	if(data)
+	if(data && JSON.parse(data).length > 0)
+    {
 		data = JSON.parse(data);
-	else data = [];
-	let count = data.length;
-	sessionStorage.setItem('count', count);
-	let step = 8;
-    let start = 0;
-    sessionStorage.setItem('start', start);
-    let content = $('#_row_content');
-    if((start+step)>=count)
-    {
-        $('#_right').css('display', 'none');
-        $('#_left').css('display', 'none');
-
-        step = count;   
-
-        for(let i = start; i < start + step; i++)
+    	let count = data.length;
+    	sessionStorage.setItem('count', count);
+    	let step = 8;
+        let start = 0;
+        sessionStorage.setItem('start', start);
+        let content = $('#_row_content');
+        if((start+step)>=count)
         {
-        	get('get_product_from_db.php?id=' + data[i]).then(function(response)
-        	{
-        		response = JSON.parse(response);
-	        	$(get_card(response.name, response.img, response.id, response.price, response.seller)).appendTo(content);
-	            $('#fav_' + response.id).bind('click', {"id": response.id}, fav_btn);
-        	});
+            step = count;   
+
+            for(let i = start; i < start + step; i++)
+            {
+            	get('get_product_from_db.php?id=' + data[i]).then(function(response)
+            	{
+            		response = JSON.parse(response);
+    	        	$(get_card(response.name, response.img, response.id, response.price, response.seller)).appendTo(content);
+    	            $('#fav_' + response.id).bind('click', {"id": response.id}, fav_btn);
+            	});
+            }
+        }
+        else
+        {
+            $('#_right').css('display', 'inline-block');
+            $('#_left').css('display', 'none');
+
+            for(let i = start; i < start + step; i++)
+            {
+            	get('get_product_from_db.php?id=' + data[i]).then(function(response)
+            	{
+            		response = JSON.parse(response);
+    	        	$(get_card(response.name, response.img, response.id, response.price, response.seller)).appendTo(content);
+    	            $('#fav_' + response.id).bind('click', {"id": response.id}, fav_btn);
+            	});
+            }
+            $('#_right').bind('click', paginate_right);
+            $('#_left').bind('click', paginate_left);
         }
     }
-    else
+    else 
     {
-        $('#_right').css('display', 'inline-block');
-        $('#_left').css('display', 'none');
-
-        for(let i = start; i < start + step; i++)
-        {
-        	get('get_product_from_db.php?id=' + data[i]).then(function(response)
-        	{
-        		response = JSON.parse(response);
-	        	$(get_card(response.name, response.img, response.id, response.price, response.seller)).appendTo(content);
-	            $('#fav_' + response.id).bind('click', {"id": response.id}, fav_btn);
-        	});
-        }
-        $('#_right').bind('click', paginate_right);
-        $('#_left').bind('click', paginate_left);
+        data = [];
+        let content = $('#_row_content');
+        console.log(content);
+        $("</hr><div class=\"container-fluid text-center\"><h3>Тут еще ничего не добавлено :(</h3></div><hr/>").appendTo(content);
     }
-
 
 });

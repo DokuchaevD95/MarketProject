@@ -1,5 +1,9 @@
 $(function(){
 	$('#_selles').addClass('active');
+
+    $('#_right').css('display', 'none');
+    $('#_left').css('display', 'none');
+
     let user_id = null;
     for(e of document.cookie.split('; '))
     {
@@ -219,9 +223,6 @@ $(function(){
             let content = $('#_row_content');
             if((start+step)>=count)
             {
-                $('#_right').css('display', 'none');
-                $('#_left').css('display', 'none');
-
                 step = count;   
                 post('get_last_products.php', 'start=' + start + "&count=" + step).then(function(data){
                     data = JSON.parse(data);

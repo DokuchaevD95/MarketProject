@@ -1,5 +1,9 @@
 $(function(){
 	$('#_my_selles').addClass('active');
+
+    $('#_right').css('display', 'none');
+    $('#_left').css('display', 'none');
+
 	let user_id = -1;
     for(e of document.cookie.split('; '))
     {
@@ -162,40 +166,46 @@ $(function(){
 			data = JSON.parse(data);
 			sessionStorage.setItem('count', data.count);
             let count = data.count;
-			let step = 8;
-            let start = 0;
-            sessionStorage.setItem('start', start);
-            let content = $('#_row_content');
-            if((start+step)>=count)
+            if(count > 0)
             {
-                $('#_right').css('display', 'none');
-                $('#_left').css('display', 'none');
+                let step = 8;
+                let start = 0;
+                sessionStorage.setItem('start', start);
+                let content = $('#_row_content');
+                if((start+step)>=count)
+                {
+                    step = count;   
+                    post('get_my_products.php', 'start=' + start + "&count=" + step + "&user_id=" + user_id).then(function(data){
+                        data = JSON.parse(data);
+                        for(let i = 0; i < data.length; i++)
+                        {
+                            $(get_card(data[i].name, data[i].img, data[i].id, data[i].price, data[i].is_selled)).appendTo(content);
+                            $('#del_' + data[i].id).bind('click', {"id": data[i].id}, delete_btn);
+                        }
+                    });
+                }
+                else
+                {
+                    $('#_right').css('display', 'inline-block');
+                    $('#_left').css('display', 'none');
 
-                step = count;   
-                post('get_my_products.php', 'start=' + start + "&count=" + step + "&user_id=" + user_id).then(function(data){
-                    data = JSON.parse(data);
-                    for(let i = 0; i < data.length; i++)
-                    {
-                    	$(get_card(data[i].name, data[i].img, data[i].id, data[i].price, data[i].is_selled)).appendTo(content);
-                    	$('#del_' + data[i].id).bind('click', {"id": data[i].id}, delete_btn);
-                    }
-                });
+                    post('get_my_products.php', 'start=' + start + "&count=" + step + "&user_id=" + user_id).then(function(data){
+                        data = JSON.parse(data);
+                        for(let i = 0; i < data.length; i++)
+                        {
+                            $(get_card(data[i].name, data[i].img, data[i].id, data[i].price, data[i].is_selled)).appendTo(content);
+                            $('#del_' + data[i].id).bind('click', {"id": data[i].id}, delete_btn);
+                        }
+                        $('#_right').bind('click', paginate_right);
+                        $('#_left').bind('click', paginate_left);
+                    });
+                }
             }
             else
             {
-                $('#_right').css('display', 'inline-block');
-                $('#_left').css('display', 'none');
-
-                post('get_my_products.php', 'start=' + start + "&count=" + step + "&user_id=" + user_id).then(function(data){
-                    data = JSON.parse(data);
-                    for(let i = 0; i < data.length; i++)
-                    {
-                    	$(get_card(data[i].name, data[i].img, data[i].id, data[i].price, data[i].is_selled)).appendTo(content);
-                    	$('#del_' + data[i].id).bind('click', {"id": data[i].id}, delete_btn);
-                    }
-                    $('#_right').bind('click', paginate_right);
-                    $('#_left').bind('click', paginate_left);
-                });
+                let content = $('#_row_content');
+                console.log(content);
+                $("</hr><div class=\"container-fluid text-center\"><h3>Тут еще ничего не добавлено :(</h3></div><hr/>").appendTo(content);
             }
 		}
 	).then(

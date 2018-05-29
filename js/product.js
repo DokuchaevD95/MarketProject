@@ -43,8 +43,8 @@ $(function(){
                 
 			if(is_login)
 				$("<div class=\"d-flex justify-content-center\">\
-					<button class=\"btn btn-danger text-center\" id=\"_comment\">Комментировать</button>\
-					</div>").appendTo('#_chat');
+					<button class=\"btn btn-block btn-primary text-center\" id=\"_comment\">Комментировать</button>\
+					</div>").prependTo('#_chat');
             
 			let buy_btn = $('#_buy');
 			let favorite_btn = $('#_favorite_product');
