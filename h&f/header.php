@@ -19,7 +19,6 @@
             function exit()
             {
                 sessionStorage.clear();
-                window.location.replace('logout.php');
             }    
         </script>
 
@@ -64,9 +63,9 @@
                                 <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"href\" style=\"margin-left:5px\">Регистрация</button>
                             </form>";
                     else 
-                        echo "<form class=\"form-inline my-2 my-lg-0\">
+                        echo "<form class=\"form-inline my-2 my-lg-0\" action=\"logout.php\">
                                 <label style=\"margin-right:3px; color:#ffffff;\">Вы вошли как $login</label>
-                                <button class=\"btn btn-outline-danger my-2 my-sm-0\" onclick=\"exit()\" style=\"margin-left:3px\"><i class=\"fa fa-sign-out\"></i>Выход</button>
+                                <button class=\"btn btn-outline-danger my-2 my-sm-0\" type=\"submit\" onclick=\"exit()\" style=\"margin-left:3px\"><i class=\"fa fa-sign-out\"></i>Выход</button>
                             </form>";
                 ?>
             </div>

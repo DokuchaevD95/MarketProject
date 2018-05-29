@@ -23,20 +23,19 @@ $(function(){
 		if(!response.error)
 		{
 			count_product = response.count;
-			console.log(response.count);
+
 			let start = count_product < max_count ? 0 :count_product - max_count;
 			max_count = count_product < max_count ? count_product : max_count;
-			console.log(start);
+
 
 			$.post('get_last_products.php', {'start': start, 'count': max_count}, function(_response){
 			_response = JSON.parse(_response);
 			if(_response.error)
 			{
-				alert(_response.error);
+
 			}
 			else
 			{
-				console.log(_response);
 				let content = $('#_carousel_content');
 				let indicator = $('#_carousel_indicator');
 				for(let i = 0; i < _response.length; i++)

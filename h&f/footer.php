@@ -31,7 +31,8 @@
                                    {
                                         if(data == "ok")
                                         {
-                                            window.location.replace('index.php');
+                                            //window.location.replace('index.php');
+                                            document.location.reload();
                                         }
                                         else
                                         {

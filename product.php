@@ -35,31 +35,6 @@ else
 					<div class="col">
 						<hr/>
 						<div class="list-group border border-primary"  id="_chat">
-						
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small>Donec id elit non mi porta.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
-  </a>
 
 						</div>
 					</div>
@@ -70,6 +45,29 @@ else
 			
 		</div>
 	</div>
+</div>
+
+
+<!---Модалка для комментирования--->
+<div class="modal fade" id="_modal_comment">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Комментарий</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
+            </div>
+            <form class="from-group">
+                <div class="modal-body">
+                   	<label for="#_comment_text">Введите ваш комментарий </label>
+                    <textarea class="form-control" type="text" id="_comment_text"></textarea>
+                    <div id="_comment_status"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" disabled="true" id="_send_comment">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <?php
