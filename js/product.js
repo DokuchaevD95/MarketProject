@@ -65,19 +65,20 @@ $(function(){
     }
     let is_login = my_id > 0 ? true : false;
     
-    
+    // Поиск продукта в бд
 	let prop = "id=" + product_id;
 	$.get('get_product_from_db.php', prop, function(data){
 		response = JSON.parse(data);
 		if (!response.error) 
 		{
+			// Если нашелся то идем далее
 			let seller_id = response.seller;
 			console.log(response);
 			let content_container = $('#_content_container');
 			let image_container = $('#_image_container');
 			let comment_container = $('#_chat');
 
-			let img_tag = "<img src=\"" + response.img + "\" class=\"rounded float-left img-fluid\">";
+			let img_tag = "<img style=\"max-height:40vh; max-width:70vw;\" src=\"" + response.img + "\" class=\"rounded float-left img-fluid\">";
 			let name_tag = "<h4 class=\"text-dark\" style=\"margin-top:7px;\">" + response.name + "</h4>";
 			let description_tag = "<div class=\"text-secondary\">" + response.description + "</div>";
 			let price_tag = "<h6 class=\"text-dark\">Цена: " + response.price + " <i class=\"fa fa-rub\"" + "</h6>";
@@ -90,6 +91,7 @@ $(function(){
 
 			$(img_tag).prependTo(image_container);
 
+			//Добавление элементов управления и их биндинг
 			if(is_login && !response.is_selled && (my_id != seller_id))
 				$("<div class=\"btn-group \" style=\"display:none;\" id=\"_btn_product_group\">\
 					<button class=\"btn btn-primary\" id=\"_buy\">Купить <i class=\"fa fa-credit-card\"></i></button>\
