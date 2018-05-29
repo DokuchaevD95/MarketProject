@@ -120,6 +120,7 @@ $(function(){
         sessionStorage.setItem("start", start);
         if(start == 0)
         {
+        	console.log(start, step, count);
             $('#_left').css('display', 'none');
             for(let i = start; i < start + step; i++)
        		{
@@ -159,7 +160,9 @@ $(function(){
         sessionStorage.setItem("start", start)
         if(start+step>=count)
         {
-            step = step - (count - start - step);
+        	$('#_right').css('display', 'none');
+        	console.log(start, step, count, count - start - step);
+            step = step + (count - (start + step));
             console.log(start, step);
             for(let i = start; i < start + step; i++)
        		{
