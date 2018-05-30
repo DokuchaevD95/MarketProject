@@ -9,7 +9,7 @@ include_once 'h&f/header.php';
 ?>
 <div class="container-fluid">
     <div class="row">
-       <div class="col-lg-8 col-md-8 col-sm-12 d-flex justify-content-center" style="">
+       <div class="col-lg-8 col-md-8 col-sm-12 d-flex justify-content-center p-0" style="">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top:2%;">
               <ol class="carousel-indicators" id="_carousel_indicator">
 
